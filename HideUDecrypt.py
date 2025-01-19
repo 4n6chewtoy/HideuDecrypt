@@ -7,6 +7,7 @@
 # Import required modules
 import hashlib
 from pbkdf2 import PBKDF2
+import sys
 
 # Hardcoded passphrase as hex (needed for key derivation)
 hex_passphrase = "92e418a05804d6fcaa5e0a0f3729b4ee"
@@ -15,7 +16,7 @@ hex_passphrase = "92e418a05804d6fcaa5e0a0f3729b4ee"
 passphrase_bytes = bytes.fromhex(hex_passphrase)
 
 # salt - first 16 bytes of encrypted DB
-salt = b'\x52\xA3\xA8\x69\x5F\x1B\x5A\x7F\xFA\xF3\x09\x8C\x49\x07\xB9\x65'
+salt = bytes.fromhex(sys.argv[1])
 
 # Params for Sql 4
 iterations = 256000
